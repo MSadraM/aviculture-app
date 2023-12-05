@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/src/store/index.ts", "app/src/contexts/AuthContext.js"  ],
+, "app/src/store/index.ts", "app/src/contexts/AuthContext.js", "app/src/redux/authReducer.js", "app/src/redux/store.js", "app/layout.jsx"  ],
   "exclude": [
     "node_modules"
   ]

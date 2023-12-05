@@ -1,45 +1,63 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
 
-  // const router = useRouter();
-  // const dispatch = useDispatch();
-  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [username, setUsername] = useState("");
 
-  // useEffect(() => {
-  //   const checkAuthentication = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:3001/check-auth", {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //       });
+  useEffect(() => {
+    // تابع برای درخواست نام کاربری از API
+    const getUsername = async () => {
+      try {
+        const token = localStorage.getItem("token"); // اینجا باید توکن احراز هویت شما باشد
+        const response = await axios.get("http://localhost:3001/get-username", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-  //       if (!response.data.authenticated) {
-  //         router.push("/login");
-  //         dispatch({ type: "SET_IS_LOGGED_IN", payload: false });
-  //       } else {
-  //         dispatch({ type: "SET_IS_LOGGED_IN", payload: true });
-  //       }
-  //     } catch (error) {
-  //       console.error("خطا در بررسی احراز هویت:", error);
-  //     }
-  //   };
+        if (response.data.success) {
+          setUsername(response.data.username);
+          console.log("username : " + response.data.username);
+        } else {
+          console.error("Failed to fetch username");
+        }
+      } catch (error) {
+        console.error("Error fetching username", error);
+      }
+    };
 
-  //   checkAuthentication();
-  // }, [router, dispatch]);
+    // اجرای تابع برای درخواست نام کاربری
+    getUsername();
+  }, []); // این useEffect فقط یک بار اجرا می‌شود
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.push("/");
+  };
 
   return (
     <div className="w-full h-full flex justify-between py-6">
-      <div className="flex flex-col justify-between items-center w-full px-4">
+      <div className="flex flex-col justify-between items-center w-full px-4 py-3">
         <div className="flex flex-col gap-y-16 w-full">
-          <p className="font-medium text-center w-full">کابر ادمین</p>
+          <Link href="/" className="flex w-full justify-start">
+            <Image src="/images/logo.svg" alt="logo" width={72} height={72} />
+          </Link>{" "}
           <div className="flex flex-col gap-y-3 w-full items-center justify-center ">
+            <div className="flex flex-col gap-y-2 items-start w-full pb-8">
+              <p className="text-gray-400 text-sm">خوش آمدید</p>
+              <p className="font-medium">{username}</p>
+            </div>
             <Link
               href="/counter"
               className={
@@ -118,7 +136,7 @@ export default function Sidebar() {
         </div>
 
         <button
-          // onClick={handleLogout}
+          onClick={handleLogout}
           className="btn btn-danger-text hover:bg-red-100 w-full"
         >
           {/* <Image src={} width={} height={} alt=""/> */}

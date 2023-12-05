@@ -8,12 +8,13 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../src/contexts/AuthContext";
 
 export default function page() {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const router = useRouter();
 
   const handleLogin = async () => {
     try {
@@ -21,12 +22,9 @@ export default function page() {
         username,
         password,
       });
-      console.log(response);
-
       if (response.data.success) {
         localStorage.setItem("token", response.data.token);
         router.push("/counter");
-        // window.location.href = "/counter";
       } else {
         alert("ورود ناموفق. لطفا نام کاربری و رمز عبور خود را بررسی کنید.");
       }

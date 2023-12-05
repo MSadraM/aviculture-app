@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 // Fake user data (for demonstration purposes)
 const users = [
-  { id: 1, username: "u1", password: "p1" },
+  { id: 1, username: "admin-user", password: "pass" },
   { id: 2, username: "u2", password: "p2" },
 ];
 
@@ -48,6 +48,31 @@ app.get("/check-auth", (req, res) => {
     return res.json({ authenticated: true });
   } catch (error) {
     return res.json({ authenticated: false });
+  }
+});
+
+app.get("/get-username", (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ success: false, message: "Unauthorized" });
+  }
+
+  try {
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.userId;
+
+    // یافتن کاربر با شناسه کاربری مرتبط با توکن
+    const user = users.find((u) => u.id === userId);
+
+    if (user) {
+      return res.json({ success: true, username: user.username });
+    } else {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+  } catch (error) {
+    return res.status(401).json({ success: false, message: "Invalid token" });
   }
 });
 
