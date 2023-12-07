@@ -47,7 +47,7 @@ export default function Sidebar() {
         "https://localhost:7222/api/user/logout"
       );
       if (response) {
-        console.log("logout OK : ");
+        console.log("logout OK");
         localStorage.removeItem("token");
         router.push("/");
       }

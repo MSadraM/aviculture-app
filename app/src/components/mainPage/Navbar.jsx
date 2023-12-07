@@ -13,18 +13,35 @@ export default function Navbar() {
 
   const [login, setLogin] = useState(false);
 
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:3001/check-auth", {
+  //         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //       });
+
+  //       if (response.data.authenticated) {
+  //         setLogin(true);
+  //       }
+  //     } catch (error) {
+  //       console.error("خطا در بررسی احراز هویت:", error);
+  //     }
+  //   };
+
+  //   checkAuthentication();
+  // }, []);
+
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/check-auth", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const response = await axios.get("https://localhost:7222/api/issignedin");
 
-        if (response.data.authenticated) {
-          setLogin(true);
+        if (response.data.isLogin) {
+          console.log("auth ok");
+          setLogin(response.data.isLogin);
         }
       } catch (error) {
-        console.error("خطا در بررسی احراز هویت:", error);
+        console.error("auth error", error);
       }
     };
 
@@ -58,7 +75,6 @@ export default function Navbar() {
           onClick={
             login ? () => router.push("/counter") : () => router.push("/login")
           }
-          x
           className="btn btn-basic-fill w-32 hover:scale-95"
         >
           {login ? "داشبورد" : "ورود"}

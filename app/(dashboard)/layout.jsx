@@ -13,15 +13,16 @@ export default function layout({ children }) {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/check-auth", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const response = await axios.get(
+          "https://localhost:7222/api/issignedin"
+        );
 
-        if (!response.data.authenticated) {
+        if (!response.data.isLogin) {
+          console.log("auth ok");
           router.push("/login");
         }
       } catch (error) {
-        console.error("خطا در بررسی احراز هویت:", error);
+        console.error("auth error", error);
       }
     };
 
