@@ -43,13 +43,17 @@ export default function Sidebar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get("https://localhost:7222/user/logout");
+      const response = await axios.get(
+        "https://localhost:7222/api/user/logout"
+      );
       console.log("logout OK : " + response.data);
+      if (response.data) {
+        localStorage.removeItem("token");
+        router.push("/");
+      }
     } catch (error) {
       console.error("logout Error");
     }
-    localStorage.removeItem("token");
-    router.push("/");
   };
 
   return (
