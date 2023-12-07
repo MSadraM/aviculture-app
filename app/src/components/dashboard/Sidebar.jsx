@@ -46,8 +46,8 @@ export default function Sidebar() {
       const response = await axios.get(
         "https://localhost:7222/api/user/logout"
       );
-      console.log("logout OK : " + response.data);
-      if (response.data) {
+      if (response) {
+        console.log("logout OK : ");
         localStorage.removeItem("token");
         router.push("/");
       }
