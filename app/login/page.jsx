@@ -18,10 +18,13 @@ export default function page() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://localhost:7222/api/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://localhost:7222/api/user/login",
+        {
+          username,
+          password,
+        }
+      );
       if (response.data) {
         localStorage.setItem("token", response.data.token);
         router.push("/counter");
