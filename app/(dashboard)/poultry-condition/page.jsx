@@ -10,7 +10,7 @@ export default function page() {
   useEffect(() => {
     const fetchChickens = async () => {
       try {
-        const response = await api.get("https://localhost:7222/api/Chicken");
+        const response = await axios.get("https://localhost:7222/api/Chicken");
         setChickens(response.data);
       } catch (error) {
         console.error("Error fetching chickens:", error);
