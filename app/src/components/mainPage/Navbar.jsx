@@ -34,7 +34,9 @@ export default function Navbar() {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get("https://localhost:7222/api/issignedin");
+        const response = await axios.get(
+          "https://localhost:7222/api/user/issignedin"
+        );
 
         if (response.data.isLogin) {
           console.log("auth ok");
