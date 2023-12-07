@@ -1,5 +1,6 @@
 import Footer from "./src/components/mainPage/Footer";
 import HeroSection from "./src/components/mainPage/HeroSection";
+import PoultryDescription from "./src/components/mainPage/PoultryDescription";
 import Navbar from "./src/components/mainPage/Navbar";
 import { AuthProvider } from "./src/contexts/AuthContext";
 // import { Provider } from "react-redux";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <div className="flex flex-col gap-y-8 w-full">
         <HeroSection />
+        <PoultryDescription />
       </div>
       <Footer />
     </main>
