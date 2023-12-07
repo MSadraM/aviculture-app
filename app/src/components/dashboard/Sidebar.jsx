@@ -13,34 +13,34 @@ export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
 
-  useEffect(() => {
-    // تابع برای درخواست نام کاربری از API
-    const getUsername = async () => {
-      try {
-        const token = localStorage.getItem("token"); // اینجا باید توکن احراز هویت شما باشد
-        const response = await axios.get("http://localhost:3001/get-username", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  // useEffect(() => {
+  //   // تابع برای درخواست نام کاربری از API
+  //   const getUsername = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token"); // اینجا باید توکن احراز هویت شما باشد
+  //       const response = await axios.get("http://localhost:3001/get-username", {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (response.data.success) {
-          setUsername(response.data.username);
-          console.log("username : " + response.data.username);
-        } else {
-          console.error("Failed to fetch username");
-        }
-      } catch (error) {
-        console.error("Error fetching username", error);
-      }
-    };
+  //       if (response.data.success) {
+  //         setUsername(response.data.username);
+  //         console.log("username : " + response.data.username);
+  //       } else {
+  //         console.error("Failed to fetch username");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching username", error);
+  //     }
+  //   };
 
-    // اجرای تابع برای درخواست نام کاربری
-    getUsername();
-  }, []); // این useEffect فقط یک بار اجرا می‌شود
+  //   // اجرای تابع برای درخواست نام کاربری
+  //   getUsername();
+  // }, []); // این useEffect فقط یک بار اجرا می‌شود
 
   const handleLogout = async () => {
     try {
@@ -63,7 +63,7 @@ export default function Sidebar() {
           <div className="flex flex-col gap-y-3 w-full items-center justify-center ">
             <div className="flex flex-col gap-y-2 items-start w-full pb-8">
               <p className="text-gray-400 text-sm">خوش آمدید</p>
-              <p className="font-medium">{username}</p>
+              {/* <p className="font-medium">{username}</p> */}
             </div>
             <Link
               href="/counter"
