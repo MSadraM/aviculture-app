@@ -10,12 +10,14 @@ import axios from "axios";
 export default function layout({ children }) {
   const router = useRouter();
 
+  const token = `Bearer ${localStorage.getItem("token")}`;
+
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
         const response = await axios.post(
           "https://localhost:7222/api/user/issignedin",
-          { token: `Bearer ${localStorage.getItem("token")}` }
+          token
         );
 
         if (!response.data) {
