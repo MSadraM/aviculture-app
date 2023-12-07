@@ -13,7 +13,7 @@ export default function page() {
       try {
         const response = await axios.get("https://localhost:7222/api/Chicken");
         setChickens(response.data.data);
-        console.log("chicken info : ", response.data.data);
+        console.log("chicken info : ", response.data.data.age);
       } catch (error) {
         console.error("Error fetching chickens:", error);
       }
@@ -49,27 +49,26 @@ export default function page() {
             </tr>
           </thead>
           <tbody>
-            {chickens &&
-              chickens.map((chicken) => (
-                <tr key={chicken.Age}>
-                  <td className="py-4 px-4 border-b text-center text-gray-800">
-                    {chicken.Age}
-                  </td>
-                  <td className="py-4 px-4 border-b text-center text-gray-800">
-                    {chicken.ChickenType}
-                  </td>
-                  <td className="py-4 px-4 border-b text-center text-gray-800">
-                    {chicken.Weight}
-                  </td>
-                  <td className="py-4 px-4 border-b text-center text-gray-800">
-                    {chicken.LayingRate}
-                  </td>
-                  <td className="py-4 px-4 border-b text-center text-gray-800">
-                    {chicken.HealthStatus}
-                  </td>
-                  {/* سایر ستون‌ها */}
-                </tr>
-              ))}
+            {chickens.map((chicken) => (
+              <tr key={chicken.id}>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.Age}
+                </td>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.ChickenType}
+                </td>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.Weight}
+                </td>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.LayingRate}
+                </td>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.HealthStatus}
+                </td>
+                {/* سایر ستون‌ها */}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
