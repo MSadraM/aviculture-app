@@ -62,24 +62,24 @@ export default function Navbar() {
   //   };
   // }, []);
 
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get(
-          "https://localhost:7222/api/user/issignedin"
-        );
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://localhost:7222/api/user/issignedin"
+  //       );
 
-        if (response.data.data) {
-          console.log("auth ok");
-          setLogin(response.data.data);
-        }
-      } catch (error) {
-        console.error("auth error", error);
-      }
-    };
+  //       if (response.data.data) {
+  //         console.log("auth ok");
+  //         setLogin(response.data.data);
+  //       }
+  //     } catch (error) {
+  //       console.error("auth error", error);
+  //     }
+  //   };
 
-    checkAuthentication();
-  }, []);
+  //   checkAuthentication();
+  // }, []);
 
   return (
     <div

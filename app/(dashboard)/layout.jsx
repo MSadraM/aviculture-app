@@ -16,15 +16,13 @@ export default function layout({ children }) {
         const response = await axios.post(
           "https://localhost:7222/api/user/issignedin",
           {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           }
         );
 
         if (!response.data) {
           router.push("/login");
-          console.log("not auth");
+          console.log(response.data);
         }
       } catch (error) {
         console.error("error : ", error);
