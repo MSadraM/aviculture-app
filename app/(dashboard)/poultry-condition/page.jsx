@@ -1,11 +1,21 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useEffect, useState } from "react";
 
 export default function page() {
-  const data = [
-    { id: 1, name: "مرغ 1", age: 2, weight: 1.5 },
-    { id: 2, name: "مرغ 2", age: 3, weight: 2.0 },
-    { id: 3, name: "مرغ 3", age: 1, weight: 1.2 },
-  ];
+  const [chickens, setChickens] = useState([]);
+
+  useEffect(() => {
+    const fetchChickens = async () => {
+      try {
+        const response = await api.get("https://localhost:7222/api/Chicken");
+        setChickens(response.data);
+      } catch (error) {
+        console.error("Error fetching chickens:", error);
+      }
+    };
+
+    fetchChickens();
+  }, []);
 
   return (
     <div className="flex flex-col justify-start items-start gap-y-8">
@@ -14,23 +24,42 @@ export default function page() {
         <table className="min-w-full bg-white w-full">
           <thead>
             <tr>
-              <th className="py-4 px-4 border-b text-gray-500 font-light">نام</th>
-              <th className="py-4 px-4 border-b text-gray-500 font-light">سن</th>
-              <th className="py-4 px-4 border-b text-gray-500 font-light">وزن</th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
+                سن
+              </th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
+                نوع
+              </th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
+                وزن
+              </th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
+                نرخ تخم گذاری
+              </th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
+                وضعیت سلامت
+              </th>
+
               {/* سایر ستون‌ها */}
             </tr>
           </thead>
           <tbody>
-            {data.map((chicken) => (
+            {chickens.map((chicken) => (
               <tr key={chicken.id}>
                 <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.name}
+                  {chicken.Age}
                 </td>
                 <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.age}
+                  {chicken.ChickenType}
                 </td>
                 <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.weight}
+                  {chicken.Weight}
+                </td>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.LayingRate}
+                </td>
+                <td className="py-4 px-4 border-b text-center text-gray-800">
+                  {chicken.HealthStatus}
                 </td>
                 {/* سایر ستون‌ها */}
               </tr>

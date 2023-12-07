@@ -10,31 +10,29 @@ import axios from "axios";
 export default function layout({ children }) {
   const router = useRouter();
 
-  const token = `Bearer ${localStorage.getItem("token")}`;
+  // useEffect(() => {
+  //   const checkAuthentication = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://localhost:7222/api/user/issignedin",
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${localStorage?.getItem("token")}`,
+  //           },
+  //         }
+  //       );
 
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get(
-          "https://localhost:7222/api/user/issignedin",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+  //       if (!response.data) {
+  //         router.push("/login");
+  //         console.log(response.data);
+  //       }
+  //     } catch (error) {
+  //       console.error("error : ", error);
+  //     }
+  //   };
 
-        if (!response.data) {
-          router.push("/login");
-          console.log(response.data);
-        }
-      } catch (error) {
-        console.error("error : ", error);
-      }
-    };
-
-    checkAuthentication();
-  }, []);
+  //   checkAuthentication();
+  // }, []);
 
   return (
     <div className="w-full h-screen flex justify-between bg-white">
