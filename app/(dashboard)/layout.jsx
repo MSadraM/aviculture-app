@@ -17,7 +17,7 @@ export default function layout({ children }) {
           "https://localhost:7222/api/user/issignedin"
         );
 
-        if (!response.data.isLogin) {
+        if (!response.data.isSuccess) {
           console.log("auth ok");
           router.push("/login");
         }
