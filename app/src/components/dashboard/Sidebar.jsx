@@ -7,7 +7,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { response } from "express";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -45,7 +44,7 @@ export default function Sidebar() {
   const handleLogout = async () => {
     try {
       const response = await axios.get("http://localhost:7222/user/logout");
-      console.log("responseeee : " + response.data);
+      console.log("responseeee OK");
     } catch (error) {
       console.error("Error");
     }
