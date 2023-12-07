@@ -17,7 +17,11 @@ export default function layout({ children }) {
       try {
         const response = await axios.post(
           "https://localhost:7222/api/user/issignedin",
-          token
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
         );
 
         if (!response.data) {
