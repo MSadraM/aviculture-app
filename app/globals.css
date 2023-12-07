@@ -4,42 +4,44 @@
 
 /* -- btn -- */
 
-.btn {
-  @apply flex justify-center items-center h-10 font-semibold text-base rounded-xl duration-300;
-}
+@layer components {
+  .btn {
+    @apply flex justify-center items-center h-10 font-semibold text-base rounded-xl duration-300;
+  }
 
-.btn-basic-fill {
-  @apply bg-emerald-600 text-white;
-}
+  .btn-basic-fill {
+    @apply bg-emerald-600 text-white;
+  }
 
-.btn-basic-tonal {
-  @apply bg-emerald-100 text-emerald-800;
-}
+  .btn-basic-tonal {
+    @apply bg-emerald-100 text-emerald-800;
+  }
 
-.btn-basic-outline {
-  @apply border border-gray-300 text-emerald-800;
-}
+  .btn-basic-outline {
+    @apply border border-gray-300 text-emerald-800;
+  }
 
-.btn-basic-text {
-  @apply text-emerald-900;
-}
+  .btn-basic-text {
+    @apply text-emerald-900;
+  }
 
-.btn-danger-text {
-  @apply text-red-600;
-}
+  .btn-danger-text {
+    @apply text-red-600;
+  }
 
-.lnk-disabled {
-  @apply flex justify-start items-center gap-x-3 h-10 px-3 text-gray-400 hover:bg-emerald-100 hover:text-emerald-800 duration-300 rounded-xl font-medium w-full;
-}
+  .lnk-disabled {
+    @apply flex justify-start items-center gap-x-3 h-10 px-3 text-gray-400 hover:bg-emerald-100 hover:text-emerald-800 duration-300 rounded-xl font-medium w-full;
+  }
 
-.lnk-enabled {
-  @apply flex justify-start items-center gap-x-3 h-10 px-3 bg-emerald-100 text-emerald-800 duration-300 rounded-xl font-medium w-full;
-}
+  .lnk-enabled {
+    @apply flex justify-start items-center gap-x-3 h-10 px-3 bg-emerald-100 text-emerald-800 duration-300 rounded-xl font-medium w-full;
+  }
 
-/* -- input -- */
+  /* -- input -- */
 
-.input-default {
-  @apply h-10 px-4 bg-white rounded-xl border-[1px] border-gray-300 focus:ring-emerald-300 placeholder:text-gray-400 focus:ring-[1.2px] focus:bg-emerald-50 focus:outline-none focus:border-none hover:duration-300 hover:bg-gray-200 transition;
+  .input-default {
+    @apply h-10 px-4 bg-white rounded-xl border-[1px] border-gray-300 focus:ring-emerald-300 placeholder:text-gray-400 focus:ring-[1.2px] focus:bg-emerald-50 focus:outline-none focus:border-none hover:duration-300 hover:bg-gray-200 transition;
+  }
 }
 
 /* -- font -- */

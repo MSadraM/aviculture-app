@@ -18,31 +18,37 @@ export default function HeroSection() {
   }, []); // آرایه خالی به معنای اجرای useEffect یک بار در هنگام اجرای اولیه
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <div className="flex flex-col gap-y-12 pb-4 items-center">
-        <h1 className="text-emerald-600 text-9xl font-black  inline-block mx-4">
+      <div className="flex flex-col gap-y-8 items-center mt-4">
+        <h1 className="text-emerald-600 text-8xl font-black  inline-block mx-4">
           طیورتک
         </h1>
-        <p className="text-gray-700 text-7xl font-semibold">
+        <p className="text-gray-700 text-5xl font-semibold">
           راه حلی نوین برای مرغداری شما
         </p>
-        {/* <div className="flex justify-center gap-x-4">
-          <button
-            onClick={
-              login
-                ? () => router.push("/counter")
-                : () => router.push("/login")
-            }
-            className="btn btn-basic-fill w-32 hover:scale-95"
-          >
-            مدیریت مرغداری
-          </button>
+        <p className="text-lg font-light text-gray-500 text-center w-2/3 leading-8 mt-4">
+          پرورش طیور به پرورش انواع مختلف طیور اهلی مانند مرغ، غاز، اردک،
+          بوقلمون، بلدرچین و غیره به منظور تولید گوشت، تخم مرغ و پر اشاره دارد.
+          جوجه های صنعتی اغلب در کنار هزاران مرغ دیگر نگهداری می شوند و از رژیم
+          غذایی ذرت و دانه های سویا استفاده می کنند
+        </p>
+        <div className="flex justify-center gap-x-4 mt-6">
           <button
             // onClick={}
-            className="btn btn-basic-tonal w-32 hover:scale-95"
+            className="btn btn-basic-tonal w-48 h-12 text-lg hover:scale-95"
           >
             بیشتر بدانید
           </button>
-        </div> */}
+          <button
+            // onClick={
+            //   login
+            //     ? () => router.push("/counter")
+            //     : () => router.push("/login")
+            // }
+            className="btn btn-basic-fill w-48 h-12 text-lg hover:scale-95"
+          >
+            مدیریت مرغداری
+          </button>
+        </div>
       </div>
     </div>
   );

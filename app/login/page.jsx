@@ -13,23 +13,24 @@ import { useAuth } from "../src/contexts/AuthContext";
 export default function page() {
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("string2");
+  const [password, setPassword] = useState("String3");
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:7222/api/user", {
+      const response = await axios.post("https://localhost:7222/api/login", {
         username,
         password,
       });
       if (response.data) {
         localStorage.setItem("token", response.data.token);
         router.push("/counter");
+        console.log("login Ok");
       } else {
         alert("ورود ناموفق. لطفا نام کاربری و رمز عبور خود را بررسی کنید.");
       }
     } catch (error) {
-      console.error("خطا در ورود:", error);
+      console.error("login Error : ", error);
     }
   };
 
@@ -49,8 +50,8 @@ export default function page() {
                 <input
                   id="user"
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  // value={username}
+                  // onChange={(e) => setUsername(e.target.value)}
                   className="input-default text-left"
                 />
               </div>
@@ -61,8 +62,8 @@ export default function page() {
                 <input
                   id="pass"
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  // value={password}
+                  // onChange={(e) => setPassword(e.target.value)}
                   className="input-default text-left"
                 />
               </div>
