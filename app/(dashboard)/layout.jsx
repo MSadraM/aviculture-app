@@ -13,7 +13,7 @@ export default function layout({ children }) {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.post(
           "https://localhost:7222/api/user/issignedin",
           {
             headers: {
