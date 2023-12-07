@@ -44,7 +44,7 @@ export default function Sidebar() {
   const handleLogout = async () => {
     try {
       const response = await axios.get("http://localhost:7222/user/logout");
-      console.log("responseeee OK");
+      console.log("responseeee OK : " + response.data);
     } catch (error) {
       console.error("Error");
     }
