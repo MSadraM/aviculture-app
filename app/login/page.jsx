@@ -25,7 +25,7 @@ export default function page() {
           password,
         }
       );
-      if (response.data) {
+      if (response.data.isSuccess) {
         localStorage.setItem("token", response.data.data.token);
         router.push("/counter");
         console.log("login Ok");
