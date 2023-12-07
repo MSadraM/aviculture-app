@@ -38,9 +38,9 @@ export default function Navbar() {
           "https://localhost:7222/api/user/issignedin"
         );
 
-        if (response.data.isSuccess) {
+        if (response.data.data) {
           console.log("auth ok");
-          setLogin(response.data.isSuccess);
+          setLogin(response.data.data);
         }
       } catch (error) {
         console.error("auth error", error);
