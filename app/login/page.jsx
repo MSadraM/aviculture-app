@@ -18,11 +18,11 @@ export default function page() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post("http://localhost:7222/api/user", {
         username,
         password,
       });
-      if (response.data.success) {
+      if (response.data) {
         localStorage.setItem("token", response.data.token);
         router.push("/counter");
       } else {
