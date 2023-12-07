@@ -13,16 +13,21 @@ export default function layout({ children }) {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get(
-          "https://localhost:7222/api/user/issignedin"
+        const response = await axios.post(
+          "https://localhost:7222/api/user/issignedin",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
         );
 
-        if (!response.data.data) {
-          console.log("auth ok");
+        if (!response.data) {
           router.push("/login");
+          console.log("not auth");
         }
       } catch (error) {
-        console.error("auth error", error);
+        console.error("error : ", error);
       }
     };
 

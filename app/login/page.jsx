@@ -25,10 +25,7 @@ export default function page() {
           password,
         }
       );
-      const response2 = await axios.get(
-        "https://localhost:7222/api/user/issignedin"
-      );
-      if (response.data.isSuccess && !response2.data.data) {
+      if (response.data.isSuccess) {
         localStorage.setItem("token", response.data.data.token);
         router.push("/counter");
         console.log("login Ok");
