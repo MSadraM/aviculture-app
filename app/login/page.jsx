@@ -13,8 +13,8 @@ import { useAuth } from "../src/contexts/AuthContext";
 export default function page() {
   const router = useRouter();
 
-  const [username, setUsername] = useState("string2");
-  const [password, setPassword] = useState("String3");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -26,7 +26,7 @@ export default function page() {
         }
       );
       if (response.data) {
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("token", response.data.data.token);
         router.push("/counter");
         console.log("login Ok");
       } else {
@@ -53,8 +53,8 @@ export default function page() {
                 <input
                   id="user"
                   type="text"
-                  // value={username}
-                  // onChange={(e) => setUsername(e.target.value)}
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="input-default text-left"
                 />
               </div>
@@ -65,8 +65,8 @@ export default function page() {
                 <input
                   id="pass"
                   type="password"
-                  // value={password}
-                  // onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="input-default text-left"
                 />
               </div>
