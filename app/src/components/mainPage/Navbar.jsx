@@ -7,16 +7,18 @@ import { useSelector } from "react-redux";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 import Link from "next/link";
-// import styled from "styled-components";
+import styled from "styled-components";
 
-// const Header = styled.header`
-//   background-color: ${(props) => (props.isScrolled ? "white" : "transparent")};
-//   transition: background-color 0.3s ease;
-//   /* دیگر استایل‌های هدر */
-// `;
+const Header = styled.header`
+  background-color: ${(props) =>
+    props.isScrolled ? "#f0fdf4" : "transparent"};
+  transition: background-color 0.3s ease;
+  /* دیگر استایل‌های هدر */
+`;
 
 export default function Navbar() {
   const router = useRouter();
+  <div className="bg-emerald-100"></div>;
 
   const [login, setLogin] = useState(false);
 
@@ -38,35 +40,35 @@ export default function Navbar() {
   //   checkAuthentication();
   // }, []);
 
-  // const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollPosition = window.scrollY;
-  //     // تعیین حداقل مقدار اسکرولی که می‌خواهید از آنجا به بعد، بک‌گراند هدر را تغییر دهید
-  //     const scrollThreshold = 100;
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      // تعیین حداقل مقدار اسکرولی که می‌خواهید از آنجا به بعد، بک‌گراند هدر را تغییر دهید
+      const scrollThreshold = 100;
 
-  //     if (scrollPosition > scrollThreshold) {
-  //       setIsScrolled(true);
-  //     } else {
-  //       setIsScrolled(false);
-  //     }
-  //   };
+      if (scrollPosition > scrollThreshold) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-  //   // اضافه کردن گوش دادن به رویداد اسکرول
-  //   window.addEventListener("scroll", handleScroll);
+    // اضافه کردن گوش دادن به رویداد اسکرول
+    window.addEventListener("scroll", handleScroll);
 
-  //   // تخریب گوش دادن به رویداد اسکرول در زمان حذف کامپوننت
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+    // تخریب گوش دادن به رویداد اسکرول در زمان حذف کامپوننت
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // useEffect(() => {
   //   const checkAuthentication = async () => {
   //     try {
   //       const response = await axios.get(
-  //         "https://localhost:7222/api/user/issignedin"
+  //         "http://localhost:86/api/user/issignedin"
   //       );
 
   //       if (response.data.data) {
@@ -82,9 +84,9 @@ export default function Navbar() {
   // }, []);
 
   return (
-    <div
-      // isScrolled={isScrolled}
-      className="w-full backdrop-blur-2xl fixed flex justify-center"
+    <Header
+      isScrolled={isScrolled}
+      className="w-full fixed flex justify-center"
     >
       <navbar className="flex w-full justify-between items-center sm:max-w-7xl py-6">
         <Link href="/">
@@ -116,6 +118,6 @@ export default function Navbar() {
           {login ? "داشبورد" : "ورود"}
         </button>
       </navbar>
-    </div>
+    </Header>
   );
 }

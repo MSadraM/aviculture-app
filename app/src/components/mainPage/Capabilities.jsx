@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
+import Property from "./Property";
 
-export default function PoultryDescription() {
+export default function Capabilities() {
   return (
     <div className="w-full h-screen flex justify-center items-center ">
       <div className="flex flex-col items-center gap-y-6">
@@ -17,31 +18,10 @@ export default function PoultryDescription() {
           استفاده می کنند
         </p>
 
-        <div className="flex gap-x-24 mt-8">
-          <Image
-            className="rounded-xl hover:scale-125 duration-500"
-            src={"/images/img-1.svg"}
-            alt="aviculture"
-            title="aviculture"
-            width={240}
-            height={240}
-          />
-          <Image
-            className="rounded-xl hover:scale-125 duration-500"
-            src={"/images/img-3.svg"}
-            alt="aviculture"
-            title="aviculture"
-            width={240}
-            height={240}
-          />
-          <Image
-            className="rounded-xl hover:scale-125 duration-500"
-            src={"/images/img-2.svg"}
-            alt="aviculture"
-            title="aviculture"
-            width={240}
-            height={240}
-          />
+        <div className="flex gap-x-12 mt-8 w-2/3">
+          <Property title="مورد اول" description="توضیحات" />
+          <Property title="مورد اول" description="توضیحات" />
+          <Property title="مورد اول" description="توضیحات" />
         </div>
       </div>
     </div>

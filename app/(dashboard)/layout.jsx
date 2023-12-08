@@ -14,20 +14,17 @@ export default function layout({ children }) {
   //   const checkAuthentication = async () => {
   //     try {
   //       const response = await axios.get(
-  //         "https://localhost:7222/api/user/issignedin",
+  //         "http://localhost:86/api/user/issignedin",
   //         {
   //           headers: {
   //             Authorization: `Bearer ${localStorage?.getItem("token")}`,
   //           },
   //         }
   //       );
-
-  //       if (!response.data) {
-  //         router.push("/login");
-  //         console.log(response.data);
-  //       }
   //     } catch (error) {
-  //       console.error("error : ", error);
+  //       console.log("status : ", response.data.status);
+  //       router.push("/login");
+  //       console.log(response.data);
   //     }
   //   };
 

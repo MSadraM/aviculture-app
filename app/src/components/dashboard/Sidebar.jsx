@@ -43,9 +43,7 @@ export default function Sidebar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(
-        "https://localhost:7222/api/user/logout"
-      );
+      const response = await axios.get("http://localhost:86/api/user/logout");
       if (response) {
         console.log("logout OK");
         localStorage.removeItem("token");

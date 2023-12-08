@@ -18,13 +18,10 @@ export default function page() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "https://localhost:7222/api/user/login",
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:86/api/user/login", {
+        username,
+        password,
+      });
       if (response.data.isSuccess) {
         localStorage.setItem("token", response.data.data.token);
         router.push("/counter");
@@ -33,7 +30,7 @@ export default function page() {
         alert("ورود ناموفق. لطفا نام کاربری و رمز عبور خود را بررسی کنید.");
       }
     } catch (error) {
-      console.error("login Error : ", error);
+      alert("خطا");
     }
   };
 

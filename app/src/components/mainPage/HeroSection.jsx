@@ -4,18 +4,18 @@ import axios from "axios";
 import React, { useEffect } from "react";
 
 export default function HeroSection() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://localhost:7222/api/Chicken");
-        console.log(response.data); // نمایش response در console
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:86/api/Chicken");
+  //       console.log(response.data); // نمایش response در console
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []); // آرایه خالی به معنای اجرای useEffect یک بار در هنگام اجرای اولیه
+  //   fetchData();
+  // }, []); // آرایه خالی به معنای اجرای useEffect یک بار در هنگام اجرای اولیه
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <div className="flex flex-col gap-y-8 items-center mt-4">

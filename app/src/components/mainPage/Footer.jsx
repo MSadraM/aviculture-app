@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="sm:max-w-7xl mb-6 rounded-xl flex justify-between w-full bg-emerald-900/10 backdrop-blur-md p-8 gap-x-8">
+    <footer className="sm:max-w-7xl mb-6 rounded-xl flex justify-between w-full bg-emerald-900/10 backdrop-blur-md p-8 gap-x-8 mt-10">
       <Image src="/images/logo.svg" alt="logo" width={104} height={104} />
       <div className="w-[1px]  bg-gray-400"> </div>
       <p className=" text-gray-600 text-justify leading-8">

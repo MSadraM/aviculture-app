@@ -6,14 +6,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function page() {
-  const [chickens, setChickens] = useState();
+  const [chickens, setChickens] = useState([]);
 
   useEffect(() => {
     const fetchChickens = async () => {
       try {
-        const response = await axios.get("https://localhost:7222/api/Chicken");
-        setChickens(response.data.data);
-        console.log("chicken info : ", response.data.data.age);
+        const response = await axios.get("http://localhost:86/api/Chicken");
+        if (response.data) {
+          setChickens(response.data.data);
+          console.log("chicken info : ", response.data.data);
+        }
       } catch (error) {
         console.error("Error fetching chickens:", error);
       }
@@ -30,10 +32,13 @@ export default function page() {
           <thead>
             <tr>
               <th className="py-4 px-4 border-b text-gray-500 font-light">
-                سن
+                جنسیت
               </th>
               <th className="py-4 px-4 border-b text-gray-500 font-light">
                 نوع
+              </th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
+                سال
               </th>
               <th className="py-4 px-4 border-b text-gray-500 font-light">
                 وزن
@@ -48,27 +53,44 @@ export default function page() {
               {/* سایر ستون‌ها */}
             </tr>
           </thead>
-          <tbody>
-            {chickens.map((chicken) => (
-              <tr key={chicken.id}>
-                <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.Age}
-                </td>
-                <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.ChickenType}
-                </td>
-                <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.Weight}
-                </td>
-                <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.LayingRate}
-                </td>
-                <td className="py-4 px-4 border-b text-center text-gray-800">
-                  {chicken.HealthStatus}
-                </td>
-                {/* سایر ستون‌ها */}
-              </tr>
-            ))}
+          <tbody className="pt-12">
+            {chickens &&
+              chickens.map((chicken, index) => (
+                <tr key={chicken.id}>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    <p>{chicken.gender ? "خروس" : "مرغ"}</p>
+                  </td>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    {chicken.chickenType == 0
+                      ? "تخم گذار"
+                      : chicken.chickenType == 1
+                      ? "گوشتی"
+                      : chicken.chickenType == 2
+                      ? "غیره"
+                      : null}
+                  </td>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    {chicken.age}&nbsp; سال
+                  </td>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    {chicken.weight}
+                    <span className="mx-1">Kg</span>
+                  </td>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    <span className="mx-[2px]">%</span> {chicken.layingRate}
+                  </td>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    {chicken.healthStatus.healthLevel == 0
+                      ? "سالم"
+                      : chicken.healthStatus.healthLevel == 1
+                      ? "مریض"
+                      : chicken.healthStatus.healthLevel == 2
+                      ? "بحرانی"
+                      : null}
+                  </td>
+                  {/* سایر ستون‌ها */}
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
