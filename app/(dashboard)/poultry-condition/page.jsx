@@ -32,6 +32,9 @@ export default function page() {
           <thead>
             <tr>
               <th className="py-4 px-4 border-b text-gray-500 font-light">
+                ردیف
+              </th>
+              <th className="py-4 px-4 border-b text-gray-500 font-light">
                 جنسیت
               </th>
               <th className="py-4 px-4 border-b text-gray-500 font-light">
@@ -57,6 +60,9 @@ export default function page() {
             {chickens &&
               chickens.map((chicken, index) => (
                 <tr key={chicken.id}>
+                  <td className="py-4 px-4 border-b text-center text-gray-800">
+                    <p>{index + 1}</p>
+                  </td>
                   <td className="py-4 px-4 border-b text-center text-gray-800">
                     <p>{chicken.gender ? "خروس" : "مرغ"}</p>
                   </td>
