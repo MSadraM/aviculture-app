@@ -22,23 +22,9 @@ export default function Navbar() {
 
   const [login, setLogin] = useState(false);
 
-  // useEffect(() => {
-  //   const checkAuthentication = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:3001/check-auth", {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //       });
-
-  //       if (response.data.authenticated) {
-  //         setLogin(true);
-  //       }
-  //     } catch (error) {
-  //       console.error("خطا در بررسی احراز هویت:", error);
-  //     }
-  //   };
-
-  //   checkAuthentication();
-  // }, []);
+  useEffect(() => {
+    localStorage.getItem("token") ? setLogin(true) : setLogin(false);
+  }, []);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -63,25 +49,6 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // useEffect(() => {
-  //   const checkAuthentication = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:86/api/user/issignedin"
-  //       );
-
-  //       if (response.data.data) {
-  //         console.log("auth ok");
-  //         setLogin(response.data.data);
-  //       }
-  //     } catch (error) {
-  //       console.error("auth error", error);
-  //     }
-  //   };
-
-  //   checkAuthentication();
-  // }, []);
 
   return (
     <Header
