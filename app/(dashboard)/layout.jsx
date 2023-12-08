@@ -18,7 +18,7 @@ export default function layout({ children }) {
         "http://localhost:86/api/user/issignedin",
         {
           headers: {
-            Authorization: `${token ? `Bearer {token}` : null}`,
+            Authorization: `${token ? `Bearer ${token}` : null}`,
           },
         }
       );
