@@ -14,7 +14,6 @@ export default function page() {
         const response = await axios.get("http://localhost:86/api/Chicken");
         if (response.data) {
           setChickens(response.data.data);
-          console.log("chicken info : ", response.data.data);
         }
       } catch (error) {
         console.error("Error fetching chickens:", error);
@@ -26,7 +25,7 @@ export default function page() {
 
   return (
     <div className="flex flex-col justify-start items-start gap-y-8">
-      <h1 className="text-3xl font-bold text-gray-800">اطلاعات طیور</h1>
+      <h1 className="text-3xl font-bold text-gray-800">وضعیت طیور</h1>
       <div className="overflow-hidden  rounded-xl w-full">
         <table className="min-w-full bg-white w-full">
           <thead>

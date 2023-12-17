@@ -3,9 +3,12 @@ import React from "react";
 
 export default function PoultryDescription() {
   return (
-    <div className="w-full h-screen flex justify-center items-center ">
+    <div
+      id="section-2"
+      className="w-full h-screen flex justify-center items-center "
+    >
       <div className="flex flex-col items-center gap-y-6">
-        <h2 className="text-3xl font-bold"> مرغداری هوشمند چیست</h2>
+        <h2 className="text-4xl font-bold">مرغداری هوشمند چیست ؟</h2>
         <p className="text-lg font-light text-gray-500 text-center w-2/3 leading-8 mt-4">
           پرورش طیور به پرورش انواع مختلف طیور اهلی مانند مرغ، غاز، اردک،
           بوقلمون، بلدرچین و غیره به منظور تولید گوشت، تخم مرغ و پر اشاره دارد.

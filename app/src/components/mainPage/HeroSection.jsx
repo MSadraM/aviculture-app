@@ -1,23 +1,19 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
-export default function HeroSection() {
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:86/api/Chicken");
-  //       console.log(response.data); // نمایش response در console
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
+import { Link } from "react-scroll";
 
-  //   fetchData();
-  // }, []); // آرایه خالی به معنای اجرای useEffect یک بار در هنگام اجرای اولیه
+export default function HeroSection() {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div
+      id="section-1"
+      className="flex flex-col justify-center items-center h-screen"
+    >
       <div className="flex flex-col gap-y-8 items-center mt-4">
         <h1 className="text-emerald-600 text-8xl font-black  inline-block mx-4">
           طیورتک
@@ -32,18 +28,19 @@ export default function HeroSection() {
           غذایی ذرت و دانه های سویا استفاده می کنند
         </p>
         <div className="flex justify-center gap-x-4 mt-6">
-          <button
-            // onClick={}
-            className="btn btn-basic-tonal w-48 h-12 text-lg hover:scale-95"
+          <Link
+            activeClass="active"
+            to="section-2"
+            spy={true}
+            smooth={true}
+            offset={-20}
+            duration={500}
+            className="btn btn-basic-tonal w-48 h-12 text-lg hover:scale-95 cursor-pointer"
           >
             بیشتر بدانید
-          </button>
+          </Link>
           <button
-            // onClick={
-            //   login
-            //     ? () => router.push("/counter")
-            //     : () => router.push("/login")
-            // }
+            onClick={() => router.push("/counter")}
             className="btn btn-basic-fill w-48 h-12 text-lg hover:scale-95"
           >
             مدیریت مرغداری

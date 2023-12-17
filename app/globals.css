@@ -10,7 +10,7 @@
   }
 
   .btn-basic-fill {
-    @apply bg-emerald-600 text-white;
+    @apply bg-emerald-600 text-white disabled:bg-gray-300 disabled:text-gray-700;
   }
 
   .btn-basic-tonal {
@@ -28,6 +28,12 @@
   .btn-danger-text {
     @apply text-red-600;
   }
+
+  .btn-disabled {
+    @apply bg-gray-400 text-gray-700;
+  }
+
+  /* -- lnk -- */
 
   .lnk-disabled {
     @apply flex justify-start items-center gap-x-3 h-10 px-3 text-gray-400 hover:bg-emerald-100 hover:text-emerald-800 duration-300 rounded-xl font-medium w-full;

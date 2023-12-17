@@ -20,16 +20,19 @@ export default function Property(props) {
     <div
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}
-      className="flex flex-col w-full py-8 items-center gap-y-8 rounded-xl bg-none hover:bg-emerald-200 duration-300"
+      className="flex flex-col w-full py-8 px-4 items-center gap-y-8 rounded-xl bg-none border-2 border-emerald-700/0 hover:border-2 hover:border-emerald-700 duration-300 select-none"
     >
       <Image
-        src={handleHover ? props.iconDefault : props.iconHover}
-        width={32}
-        height={32}
+        src={!isHovered ? props.iconDefault : props.iconHover}
+        width={48}
+        height={48}
+        className="duration-300"
       />
-      <div className="font-bold text-lg text-black">{props.title}</div>
-      <div className="font-light text-base text-gray-600">
-        {props.description}
+      <div className="flex flex-col items-center gap-y-4">
+        <div className="font-bold text-xl text-emerald-700">{props.title}</div>
+        <div className="font-light text-base text-gray-600 text-center leading-7">
+          {props.description}
+        </div>
       </div>
     </div>
   );
