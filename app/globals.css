@@ -48,6 +48,12 @@
   .input-default {
     @apply h-10 px-4 bg-white rounded-xl border-[1px] border-gray-300 focus:ring-emerald-300 placeholder:text-gray-400 focus:ring-[1.2px] focus:bg-emerald-50 focus:outline-none focus:border-none hover:duration-300 hover:bg-gray-200 transition;
   }
+
+  /* -- table -- */
+
+  .row-default{
+    @apply hover:bg-gray-100 duration-300
+  }
 }
 
 /* -- font -- */

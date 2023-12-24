@@ -118,7 +118,7 @@ export default function page() {
       <div className="overflow-hidden rounded-xl w-full">
         <table className="min-w-full bg-white w-full">
           <thead>
-            <tr>
+            <tr className="">
               <th className="py-4 px-4 border-b text-gray-500 font-light">
                 ردیف
               </th>
@@ -149,7 +149,7 @@ export default function page() {
           <tbody className="pt-12">
             {chickens &&
               chickens.map((chicken, index) => (
-                <tr key={chicken.id}>
+                <tr key={chicken.id} className="row-default">
                   <td className="py-4 px-4 border-b text-center text-gray-800">
                     <p>{index + 1}</p>
                   </td>
