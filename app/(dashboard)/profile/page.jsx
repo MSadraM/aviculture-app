@@ -9,7 +9,7 @@ export default function page() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    mobileNumber: "",
+    phoneNumber: "",
     password: "",
   });
 
@@ -48,7 +48,7 @@ export default function page() {
       const updatedFormData = {
         username: apiData.username,
         email: apiData.email,
-        mobileNumber: apiData.mobileNumber,
+        phoneNumber: apiData.phoneNumber,
         password: "S4fuujtgkghn",
       };
 
@@ -94,6 +94,7 @@ export default function page() {
 
       // Reset the form changed state after successful submission
       setFormChanged(false);
+      window.location.reload();
     } catch (error) {
       console.error("Error submitting data:", error);
       // Optional: Display an error message to the user
@@ -140,15 +141,15 @@ export default function page() {
           </div>
           <div className="flex  flex-col-reverse gap-y-3 w-full">
             <input
-              name="mobileNumber"
-              id="mobileNumber"
+              name="phoneNumber"
+              id="phoneNumber"
               type="tel"
-              value={formData.mobileNumber}
+              value={formData.phoneNumber}
               onChange={handleInputChange}
               className="input-default text-left w-full peer"
             />
             <label
-              htmlFor="mobileNumber"
+              htmlFor="phoneNumber"
               className="text-gray-400 text-sm peer-focus-within:font-semibold peer-focus-within:text-gray-800"
             >
               شماره تلفن :

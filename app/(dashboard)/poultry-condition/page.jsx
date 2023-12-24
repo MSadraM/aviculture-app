@@ -47,7 +47,6 @@ export default function page() {
     age: 1,
     weight: 1,
     layingRate: 0,
-    healthLevel: 0,
   });
 
   // تابع باز و بسته کردن مودال
@@ -67,8 +66,6 @@ export default function page() {
       height: "580px",
       padding: "24px",
       borderRadius: "12px",
-      // backdropBlur: "blur(24px)",
-      // backgroudColor: "black",
     },
   };
 
@@ -76,7 +73,21 @@ export default function page() {
   const handleSaveChicken = async () => {
     try {
       // ارسال درخواست به API برای ثبت اطلاعات مرغ
-      axios.post("http://localhost:86/api/Chicken", newChickenData);
+      const saveChickenResponse = await axios.post(
+        "http://localhost:86/api/Chicken",
+        newChickenData
+      );
+
+      const savedChickenId = saveChickenResponse.data.data.id;
+      console.log("savedChickenId : ", savedChickenId);
+      const savedHealthLevel = newChickenData.healthLevel;
+
+      axios.put("http://localhost:86/api/HealthStatus", {
+        id: savedChickenId,
+        healthLevel: savedHealthLevel,
+        bodyTemprature: 39,
+        checkupDate: "2023-12-24T18:34:16.482Z",
+      });
 
       // بازنشانی داده‌های فرم
 
@@ -86,7 +97,6 @@ export default function page() {
         age: 1,
         weight: 1,
         layingRate: 0,
-        healthLevel: 0,
       });
 
       // درخواست جدید برای به‌روزرسانی لیست مرغ‌ها از API
@@ -103,7 +113,7 @@ export default function page() {
   };
 
   return (
-    <div className="flex flex-col justify-start items-start gap-y-8 pb-8">
+    <div className="flex flex-col justify-start items-start gap-y-8 pb-8 ">
       <h1 className="text-3xl font-bold text-gray-800">وضعیت طیور</h1>
       <div className="overflow-hidden rounded-xl w-full">
         <table className="min-w-full bg-white w-full">
@@ -163,16 +173,26 @@ export default function page() {
                     <span className="mx-1">Kg</span>
                   </td>
                   <td className="py-4 px-4 border-b text-center text-gray-800">
-                    <span className="mx-[2px]">%</span> {chicken.layingRate}
+                    <div className="w-full flex justify-center">
+                      <p className="bg-gray-200 text-gray-700 font-medium w-16 py-1 rounded-xl">
+                        <span className="mx-[2px]">%</span> {chicken.layingRate}
+                      </p>
+                    </div>
                   </td>
-                  <td className="py-4 px-4 border-b text-center text-gray-800">
-                    {chicken.healthStatus.healthLevel == 0
-                      ? "سالم"
-                      : chicken.healthStatus.healthLevel == 1
-                      ? "مریض"
-                      : chicken.healthStatus.healthLevel == 2
-                      ? "بحرانی"
-                      : null}
+                  <td className="py-4 px-4 border-b text-center text-gray-800 flex justify-center">
+                    {chicken.healthStatus.healthLevel == 0 ? (
+                      <p className="bg-emerald-100 text-emerald-700 font-medium w-16 py-1 rounded-xl">
+                        سالم
+                      </p>
+                    ) : chicken.healthStatus.healthLevel == 1 ? (
+                      <p className="bg-orange-100 text-orange-700 font-medium w-16 py-1 rounded-xl">
+                        بیمار
+                      </p>
+                    ) : chicken.healthStatus.healthLevel == 2 ? (
+                      <p className="bg-red-100 text-red-700 font-medium w-16 py-1 rounded-xl">
+                        بحرانی
+                      </p>
+                    ) : null}
                   </td>
                   <td className="py-4 px-4 border-b text-center text-gray-800">
                     {/* اضافه کردن دکمه حذف */}
@@ -331,7 +351,7 @@ export default function page() {
                       className="input-default w-full mt-4"
                     >
                       <option value={0}>سالم</option>
-                      <option value={1}>مریض</option>
+                      <option value={1}>بیمار</option>
                       <option value={2}>بحرانی</option>
                     </select>
                   </div>

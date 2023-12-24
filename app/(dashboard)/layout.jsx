@@ -32,10 +32,12 @@ export default function layout({ children }) {
 
   return (
     <div className="w-full h-screen flex justify-between bg-white">
-      <div className="w-72">
+      <div className="w-72 h-full">
         <Sidebard />
       </div>
-      <div className="w-full p-8 flex flex-col">{children}</div>
+      <div className="w-full p-8 flex flex-col overflow-y-scroll">
+        {children}
+      </div>
     </div>
   );
 }

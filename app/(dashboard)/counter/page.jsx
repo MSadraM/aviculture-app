@@ -244,7 +244,7 @@ export default function page() {
                     {
                       id: 1,
                       value: health1,
-                      label: "Patient",
+                      label: "sick",
                     },
                     {
                       id: 2,
