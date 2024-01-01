@@ -67,10 +67,10 @@ export default function Sidebar() {
             <Image src="/images/logo.svg" alt="logo" width={72} height={72} />
           </Link>{" "}
           <div className="flex flex-col gap-y-3 w-full items-center justify-center ">
-            <div className="flex flex-col gap-y-2 items-start w-full pb-8">
-              <p className="text-gray-400 text-sm">خوش آمدید</p>
-              {/* <p className="font-medium">{username}</p> */}
-            </div>
+            {/* <div className="flex flex-col gap-y-2 items-start w-full pb-8"> */}
+            {/* <p className="text-gray-400 text-sm">خوش آمدید</p> */}
+            {/* <p className="font-medium">{username}</p> */}
+            {/* </div> */}
             <Link
               href="/counter"
               className={
