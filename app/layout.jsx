@@ -1,12 +1,15 @@
-"use client";
+// "use client";
 
 import "./globals.css";
 import React from "react";
 
-// export const metadata: { title: string; description: string } = {
-//   title: "طیورتک",
-//   description: "مرغداری نوین",
-// };
+export const metadata = {
+  title: "طیورتک",
+  description: "مرغداری هوشمند",
+  icons: {
+    icon: "/icons/widget-enabled.svg",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (

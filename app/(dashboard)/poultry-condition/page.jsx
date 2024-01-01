@@ -42,7 +42,7 @@ export default function page() {
   // استورهای مورد نیاز برای مدیریت مودال
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newChickenData, setNewChickenData] = useState({
-    gender: true, // مقدار پیش‌فرض برای جنسیت
+    gender: false, // مقدار پیش‌فرض برای جنسیت
     chickenType: 0, // مقدار پیش‌فرض برای نوع مرغ
     age: 1,
     weight: 1,
@@ -92,7 +92,7 @@ export default function page() {
       // بازنشانی داده‌های فرم
 
       setNewChickenData({
-        gender: true,
+        gender: false,
         chickenType: 0,
         age: 1,
         weight: 1,
@@ -256,13 +256,13 @@ export default function page() {
                       onChange={(e) =>
                         setNewChickenData({
                           ...newChickenData,
-                          gender: Number(e.target.value),
+                          gender: JSON.parse(e.target.value),
                         })
                       }
                       className="input-default w-full mt-4"
                     >
-                      <option value={0}>مرغ</option>
-                      <option value={1}>خروس</option>
+                      <option value={"false"}>مرغ</option>
+                      <option value={"true"}>خروس</option>
                     </select>
                   </div>
                   <div className="mb-4 w-full">

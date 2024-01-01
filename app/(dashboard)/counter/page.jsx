@@ -12,7 +12,15 @@ import { BarChart } from "@mui/x-charts";
 export default function page() {
   const [chickens, setChickens] = useState([]);
   const [zones, setZones] = useState([]);
-
+  const [chartData, setChartData] = useState({
+    xAxis: [
+      {
+        scaleType: "band",
+        data: ["Feeding area", "Laying area", "Health area"],
+      },
+    ],
+    series: [],
+  });
   const health =
     chickens.filter((chicken) => chicken.healthStatus.healthLevel === 0)
       .length /
@@ -76,7 +84,32 @@ export default function page() {
         const response = await axios.get("http://localhost:86/api/Zone");
         if (response.data) {
           setZones(response.data.data);
-          // console.log("Zone info : ", zones);
+
+          const temperatureData = response.data.data.map(
+            (zone) => zone.weather.averageTemperature
+          );
+          const humidityData = response.data.data.map(
+            (zone) => zone.weather.averageHumidity
+          );
+          const ventilationData = response.data.data.map(
+            (zone) => zone.weather.averageVentilation
+          );
+
+          // ذخیره داده‌ها در استیت محلی
+          setChartData({
+            xAxis: [
+              {
+                scaleType: "band",
+                data: ["Feeding area", "Laying area", "Health area"],
+              },
+            ],
+            series: [
+              { data: temperatureData, name: "Average Temperature" },
+              { data: humidityData, name: "Average Humidity" },
+              { data: ventilationData, name: "Average Ventilation" },
+            ],
+          });
+          console.log("extractedData : ", extractedData);
         }
       } catch (error) {
         console.error("Error fetching zones:", error);
@@ -395,17 +428,8 @@ export default function page() {
               className=" border border-gray-300 gap-y-6 bg-white w-full rounded-xl flex justify-center items-center"
             >
               <BarChart
-                xAxis={[
-                  {
-                    scaleType: "band",
-                    data: ["Feeding area", "Laying area", "Health area"],
-                  },
-                ]}
-                series={[
-                  { data: [37, 52, 95] },
-                  { data: [40, 35, 13] },
-                  { data: [39, 73, 69] },
-                ]}
+                xAxis={chartData.xAxis}
+                series={chartData.series}
                 width={1000}
                 height={300}
               />
