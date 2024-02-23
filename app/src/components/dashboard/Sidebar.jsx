@@ -147,12 +147,10 @@ export default function Sidebar() {
             </Link>
           </div>
         </div>
-
         <button
           onClick={handleLogout}
           className="btn btn-danger-text hover:bg-red-100 w-full"
         >
-          {/* <Image src={} width={} height={} alt=""/> */}
           خروج از حساب کاربری
         </button>
       </div>
@@ -160,3 +158,5 @@ export default function Sidebar() {
     </div>
   );
 }
+
+

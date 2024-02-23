@@ -5,13 +5,9 @@ import Capabilities from "./src/components/mainPage/Capabilities";
 import Data from "./src/components/mainPage/Data";
 import AboutUs from "./src/components/mainPage/AboutUs";
 import Navbar from "./src/components/mainPage/Navbar";
-import { AuthProvider } from "./src/contexts/AuthContext";
-// import { Provider } from "react-redux";
-// import store from "../store";
 
 export default function Home() {
   return (
-    // <AuthProvider>
     <main className="flex flex-col items-center w-full relative">
       <div className="bg-gradient-to-tr from-emerald-100 to-white -z-10 fixed w-full h-full"></div>
       <Navbar />
@@ -24,6 +20,5 @@ export default function Home() {
       </div>
       <Footer />
     </main>
-    // </AuthProvider>
   );
 }
